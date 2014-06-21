@@ -1,0 +1,25 @@
+<div data-ng-controller="SearchController">
+    <form name="prescriptionForm" ng-submit="prescriptionForm.$valid && searchPrescription(search)" novalidate>
+        <fieldset class="form-group">
+            <strong>Right eye</strong>
+            <br>
+            Sphere: <input type="number" name="sphere" ng-model="search.rightEye.sphere" class="form-control" required>
+            Cylinder: <input type="number" name="cylinder" ng-model="search.rightEye.cylinder" class="form-control" required>
+            Axis: <input type="number" name="axis" ng-model="search.rightEye.axis" class="form-control" required>
+
+            <br>
+            <strong>Left eye</strong>
+            <br>
+            Sphere: <input type="number" name="sphere" ng-model="search.leftEye.sphere" class="form-control" required>
+            Cylinder: <input type="number" name="cylinder" ng-model="search.leftEye.cylinder" class="form-control" required>
+            Axis: <input type="number" name="axis" ng-model="search.leftEye.axis" class="form-control" required>
+            <input class="btn btn-primary pull-right" type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+    <div>
+        <p ng-repeat="glasses in matchingGlasses">
+            {{glasses}}
+        </p>
+    </div>
+</div>
