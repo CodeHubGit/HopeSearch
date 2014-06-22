@@ -13,5 +13,11 @@ angular.module('search').config(['$stateProvider', '$urlRouterProvider',
                 url: '/search',
                 templateUrl: 'modules/search/views/search.client.view.html'
             });
+
+        $stateProvider.
+            state('listGlasses', {
+                url: '/listGlasses',
+                templateUrl: 'modules/search/views/list-glasses.client.view.html'
+            });
     }
 ]);
