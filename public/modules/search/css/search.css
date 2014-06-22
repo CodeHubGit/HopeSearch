@@ -5,3 +5,18 @@
 .ng-valid.ng-dirty{
     border-color:green;
 }
+
+.fieldWrapper {
+    float: left;
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin: 0 auto;
+}
+
+.fieldContainer{
+    margin: 0 auto;
+    width:80%;
+}
+
