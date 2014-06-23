@@ -32,6 +32,14 @@ var PrescriptionSchema = new Schema({
     number:{
         type: Number
     },
+    frame:{
+        type: String,
+        default: ""
+    },
+    lens:{
+        type: String,
+        default: ""
+    },
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
