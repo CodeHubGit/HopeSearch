@@ -9,7 +9,11 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 		$scope.create = function() {
 			// Create new Prescription object
 			var prescription = new Prescriptions ({
-				name: this.name
+				eyes: [
+                    {sphere: this.rSphere, cylinder:this.rCylinder, axis:this.rAxis, position:'Right'},
+                    {sphere: this.lSphere, cylinder:this.lCylinder, axis:this.lAxis, position:'Left'}
+                ],
+                number:this.number
 			});
 
 			// Redirect after save
@@ -20,7 +24,7 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 			});
 
 			// Clear form fields
-			this.name = '';
+			this.Eyes = [];
 		};
 
 		// Remove existing Prescription

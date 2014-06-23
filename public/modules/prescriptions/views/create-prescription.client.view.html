@@ -6,11 +6,44 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <h4>Right eye</h4>
+                    <label class="control-label" for="rCylinder">Cylinder</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="number" data-ng-model="rCylinder" id="rCylinder" class="form-control" placeholder="Cylinder" required>
+                    </div>
+                    <label class="control-label" for="rSphere">Sphere</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="rSphere" id="rSphere" class="form-control" placeholder="Sphere" required>
+                    </div>
+                    <label class="control-label" for="rAxis">Axis</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="rAxis" id="rAxis" class="form-control" placeholder="Axis" required>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <h4>Left eye</h4>
+                    <label class="control-label" for="lCylinder">Cylinder</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="lCylinder" id="lCylinder" class="form-control" placeholder="Cylinder" required>
+                    </div>
+                    <label class="control-label" for="lSphere">Sphere</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="lSphere" id="lSphere" class="form-control" placeholder="Sphere" required>
+                    </div>
+                    <label class="control-label" for="lAxis">Axis</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="lAxis" id="lAxis" class="form-control" placeholder="Axis" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="number">Number</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="number" id="number" class="form-control" placeholder="Number" required>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
