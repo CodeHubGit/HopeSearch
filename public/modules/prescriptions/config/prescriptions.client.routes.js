@@ -5,6 +5,10 @@ angular.module('prescriptions').config(['$stateProvider',
 	function($stateProvider) {
 		// Prescriptions state routing
 		$stateProvider.
+		state('searchPrescription', {
+			url: '/prescriptions/search',
+			templateUrl: 'modules/prescriptions/views/search-prescription.client.view.html'
+		}).
 		state('listPrescriptions', {
 			url: '/prescriptions',
 			templateUrl: 'modules/prescriptions/views/list-prescriptions.client.view.html'

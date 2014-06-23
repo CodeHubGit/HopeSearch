@@ -34,11 +34,11 @@ var PrescriptionSchema = new Schema({
     },
     frame:{
         type: String,
-        default: ""
+        default: ''
     },
     lens:{
         type: String,
-        default: ""
+        default: ''
     },
 	user: {
 		type: Schema.ObjectId,
