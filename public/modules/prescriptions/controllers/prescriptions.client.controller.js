@@ -24,7 +24,7 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 			});
 
 			// Clear form fields
-			this.Eyes = [];
+			this.eyes = [];
 		};
 
 		// Remove existing Prescription
