@@ -25,6 +25,13 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 
 			// Clear form fields
 			this.eyes = [];
+            this.rSphere = '';
+            this.rCylinder = '';
+            this.rAxis = '';
+            this.lSphere = '';
+            this.lAxis = '';
+            this.lCylinder = '';
+            this.number = '';
 		};
 
 		// Remove existing Prescription
@@ -59,9 +66,14 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 			$scope.prescriptions = Prescriptions.query();
 		};
 
+        // search for a list of Prescriptions
+        $scope.search = function() {
+            $scope.prescriptions = Prescriptions.query();
+        };
+
 		// Find existing Prescription
 		$scope.findOne = function() {
-			$scope.prescription = Prescriptions.get({ 
+			$scope.prescription = Prescriptions.get({
 				prescriptionId: $stateParams.prescriptionId
 			});
 		};

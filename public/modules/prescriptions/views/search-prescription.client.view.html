@@ -1,9 +1,9 @@
-<section data-ng-controller="SearchPrescriptionController">
+<section data-ng-controller="PrescriptionsController">
     <div class="page-header">
         <h1>Search Prescription</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="search()" novalidate>
+        <form name="searchForm" class="form-horizontal" data-ng-submit="search()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <h4>Right eye</h4>
@@ -45,19 +45,17 @@
                 </div>
             </fieldset>
         </form>
-    </div>
 
-    <div class="list-group">
-        <a data-ng-repeat="prescription in prescriptions" data-ng-href="#!/prescriptions/{{prescription._id}}" class="list-group-item">
-            <small class="list-group-item-text">
+        <div class="list-group" data-ng-show="prescriptions.$resolved || !prescriptions.length">
+            <a data-ng-repeat="prescription in prescriptions" data-ng-href="#!/prescriptions/{{prescription._id}}" class="list-group-item">
+                <small class="list-group-item-text">
+
                 <span ng-repeat="eye in prescription.eyes">
                     <strong>{{eye.position}}</strong>-{{eye.cylinder}}-{{eye.sphere}}-{{eye.axis}}
                 </span>
-            </small>
-            <h4 class="list-group-item-heading" data-ng-bind="prescription.number"></h4>
-        </a>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!prescriptions.$resolved || prescriptions.length">
-        No Prescriptions yet, why don't you <a href="/#!/prescriptions/create">create one</a>?
+                </small>
+                <h4 class="list-group-item-heading" data-ng-bind="prescription.number"></h4>
+            </a>
+        </div>
     </div>
 </section>
