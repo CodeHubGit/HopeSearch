@@ -99,11 +99,11 @@ exports.delete = function(req, res) {
  * else return all prescriptions
  */
 exports.list = function(req, res) {
-    console.log(req.query);
-
     //if request has a prescription object do a search
     if(req.query.hasOwnProperty('prescription')){
+        Prescription.find().sort('+number').exec(function (err, prescriptions) {
 
+        });
     }
     //else list all prescriptions
     else {

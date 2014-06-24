@@ -8,7 +8,7 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
         // Create new Prescription
         $scope.create = function() {
             // Create new Prescription object
-            var prescription = new Prescriptions ({
+            var prescription = new Prescriptions({
                 eyes: [
                     {sphere: this.rSphere, cylinder:this.rCylinder, axis:this.rAxis, position:'Right'},
                     {sphere: this.lSphere, cylinder:this.lCylinder, axis:this.lAxis, position:'Left'}
@@ -52,7 +52,8 @@ angular.module('prescriptions').controller('PrescriptionsController', ['$scope',
 
         // Update existing Prescription
         $scope.update = function() {
-            var prescription = $scope.prescription ;
+            var prescription = $scope.prescription;
+            console.log(prescription);
 
             prescription.$update(function() {
                 $location.path('prescriptions/' + prescription._id);
