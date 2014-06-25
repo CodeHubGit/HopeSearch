@@ -1,7 +1,15 @@
 'use strict';
 
+//You need to have a creds file to work on this db
+//TODO Fix this crap later
+var creds = require('/home/macsj200/creds.json');
+
 module.exports = {
-	db: 'mongodb://localhost/hope-search-dev',
+    /**
+     * You need to change these credentials to gain access to the server
+     * What the eff?
+     */
+	db: 'mongodb://' + creds.username + ':' + creds.password +'@ds043467.mongolab.com:43467/hopesearch',
 	app: {
 		title: 'hope-search - Development Environment'
 	},

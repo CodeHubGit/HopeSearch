@@ -7,23 +7,26 @@ var mongoose = require('mongoose'),
     Prescription = mongoose.model('Prescription'),
     _ = require('lodash');
 
-var presdata = require('/home/macsj200/export.json');
 
-//clear db
-Prescription.remove(function(err, prescription){
-    if(err){
-        console.log(err);
-    }
-});
+//Do database initialization stuff (careful with this)
 
-for(var i = 0; i < presdata.glasses.length; i++){
-    var prescription = new Prescription(presdata.glasses[i]);
-    prescription.save(function(err){
-        if(err){
-            console.log(err);
-        }
-    });
-}
+//var presdata = require('/home/macsj200/export.json');
+//
+////clear db
+//Prescription.remove(function(err, prescription){
+//    if(err){
+//        console.log(err);
+//    }
+//});
+//
+//for(var i = 0; i < presdata.glasses.length; i++){
+//    var prescription = new Prescription(presdata.glasses[i]);
+//    prescription.save(function(err){
+//        if(err){
+//            console.log(err);
+//        }
+//    });
+//}
 
 /**
  * Get the error message from error object
@@ -191,15 +194,6 @@ exports.list = function(req, res) {
 //                res.jsonp(prescriptions);
 //            }
 //        });
-
-        Prescription.find().exec(function(err, prescriptions){
-            if(err){
-                console.log(getErrorMessage(err));
-            }
-            else{
-                console.log(prescriptions);
-            }
-        });
     }
     //else list all prescriptions
     else {
