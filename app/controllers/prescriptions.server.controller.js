@@ -7,6 +7,24 @@ var mongoose = require('mongoose'),
     Prescription = mongoose.model('Prescription'),
     _ = require('lodash');
 
+var presdata = require('/home/macsj200/export.json');
+
+//clear db
+Prescription.remove(function(err, prescription){
+    if(err){
+        console.log(err);
+    }
+});
+
+for(var i = 0; i < presdata.glasses.length; i++){
+    var prescription = new Prescription(presdata.glasses[i]);
+    prescription.save(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+}
+
 /**
  * Get the error message from error object
  */
@@ -93,6 +111,51 @@ exports.delete = function(req, res) {
 };
 
 /**
+ * Function that performs filtered searches
+ */
+function doSearch(req, res, Prescription, depth){
+    Prescription.find().sort('+number').exec(function (err, prescriptions) {
+
+    });
+}
+
+/**
+ * Helper function that checks if num is between two numbers
+ * syntactic sugar
+ */
+
+function isBetween(num, low, high){
+    return (num >= low) && (num <= high);
+}
+
+/**
+ * Check if axis1 is within range of axis2
+ * mod 180
+ */
+function checkAxis(axis1, axis2, range){
+    axis1 = axis1 % 180;
+    axis2 = axis2% 180;
+
+    if(axis2 + range > 180){
+        if(!(axis1 <= axis2 + range - 180 || axis1 >= axis2 - range)){
+            return false;
+        }
+    }
+    else if(axis2 - range < 0){
+        if(!(axis1 <= axis2 + range || axis1 >= axis2 - range + 180)){
+            return false;
+        }
+    }
+    else{
+        if(!isBetween(axis1, axis2 - range, axis2 + range)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
  * List of Prescriptions
  *
  * if req is not empty, return filtered items
@@ -101,8 +164,41 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     //if request has a prescription object do a search
     if(req.query.hasOwnProperty('prescription')){
-        Prescription.find().sort('+number').exec(function (err, prescriptions) {
+        var prescription = JSON.parse(req.query.prescription);
 
+        var searches = 0;
+        var numberOfResults = 0;
+        var results;
+
+        var rightEye = prescription.eyes[0];
+        var leftEye = prescription.eyes[1];
+//        while(searches <= 8 && numberOfResults <= 15){
+//            searches = searches + 1;
+//
+//
+//        }
+
+//        Prescription.find(
+//            {
+//                $and: [{'eyes.cylinder' : {'$gte': 0}}, {'eyes.position' : 'Right'}]
+//            }
+//        ).exec(function(err, prescriptions){
+//            if (err) {
+//                return res.send(400, {
+//                    message: getErrorMessage(err)
+//                });
+//            } else {
+//                res.jsonp(prescriptions);
+//            }
+//        });
+
+        Prescription.find().exec(function(err, prescriptions){
+            if(err){
+                console.log(getErrorMessage(err));
+            }
+            else{
+                console.log(prescriptions);
+            }
         });
     }
     //else list all prescriptions
