@@ -2,7 +2,7 @@
 
 //You need to have a creds file to work on this db
 //TODO Fix this crap later
-var creds = require('/home/macsj200/creds.json');
+var creds = require(process.env.HOME + '/creds.json');
 
 module.exports = {
     /**
